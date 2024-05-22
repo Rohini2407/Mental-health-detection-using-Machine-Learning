@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div class="container bg-dark text-white mt-3">
+    <h2 class="pt-3">Hello, {{ request.user }}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="container">
+
+            <div class="col-12 mt-5">
+                <h1 class="text-center alert alert-info">Take a Test</h1>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <label for="first_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Have you lately feeling sad or lonely?</label>
+                <select name="first_ques" id="first_ques" class="form-control">
+                    {% for first_que in form.first_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+                <label for="second_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Do you feel Angry Now-a-Days?</label>
+                <select name="second_ques" id="second_ques" class="form-control">
+                    {% for first_que in form.second_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+                <label for="third_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Do you Smoke?</label>
+                <select name="third_ques" id="third_ques" class="form-control">
+                    {% for first_que in form.third_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+                <label for="fourth_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Do you consume Alcohol?</label>
+                <select name="fourth_ques" id="fourth_ques" class="form-control">
+                    {% for first_que in form.fourth_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+                <label for="fifth_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    have you felt threaten by someone?</label>
+                <select name="fifth_ques" id="fifth_ques" class="form-control">
+                    {% for first_que in form.fifth_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+
+                <input type="submit" value="Submit your Response" class="btn btn-outline-light my-5">
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

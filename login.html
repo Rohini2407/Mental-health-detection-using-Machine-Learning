@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="container card mt-5 col-lg-4 bg-dark text-white">
+            <h2 class="text-center mt-4">Login Page</h2>
+            <div class="form-floating my-2">
+                <label for="floatingInput">Username</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+                
+            </div>
+            <div class="form-floating my-2">
+                <label for="floatingPassword">Password</label>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+            </div>
+            <div class="form-floating">
+                <p>Don't have an Account? <a class="text-white" href="/signup"> Register Here</a></p>
+                <input type="submit" class="btn btn-primary mb-5 text-center" value="Login">
+            </div>
+        </div>
+    </form>
+{% endblock %}

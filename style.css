@@ -1,0 +1,17 @@
+body {
+    background-image: url('../images/yoga-header.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* or scroll if you want it to scroll with content */
+    
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    color: aliceblue;
+}

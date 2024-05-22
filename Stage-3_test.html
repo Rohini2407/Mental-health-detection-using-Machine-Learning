@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Stage-3| Test
+{% endblock %}
+
+{% block content %}
+<div class="container bg-dark text-white mt-3">
+    <h4 class="pt-3">Hello, {{ request.user }}</h4>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="col-lg-12 mt-3">
+            <h1 class="text-center alert alert-info">Take a Test</h1>
+        </div>
+        <div class="col-lg-8 mx-auto">
+            <label for="first_ques"
+                style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                Do you take any pills before it for some purpose?</label>
+            <select name="first_ques" id="first_ques" class="form-control">
+                {% for first_que in form.first_ques %}
+                {{ first_que }}
+                {% endfor %}
+
+            </select>
+            <label for="second_ques"
+                style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                How frequently have you been bothered by not being able to stop worrying?</label>
+            <select name="second_ques" id="second_ques" class="form-control">
+                {% for first_que in form.second_ques %}
+                {{ first_que }}
+                {% endfor %}
+
+            </select>
+            <label for="third_ques"
+                style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                Let’s talk about how often you have felt satisfied with yourself over the past X months.</label>
+            <select name="third_ques" id="third_ques" class="form-control">
+                {% for first_que in form.third_ques %}
+                {{ first_que }}
+                {% endfor %}
+
+            </select>
+            <label for="fourth_ques"
+                style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                What about your hopes and dreams for the future? What feelings have you had recently about working
+                toward those goals?</label>
+            <select name="fourth_ques" id="fourth_ques" class="form-control">
+                {% for first_que in form.fourth_ques %}
+                {{ first_que }}
+                {% endfor %}
+
+            </select>
+            <label for="fifth_ques"
+                style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                Tell me about any important activities or projects that you’ve been involved with recently. How much
+                enjoyment do you get from these?</label>
+            <select name="fifth_ques" id="fifth_ques" class="form-control">
+                {% for first_que in form.fifth_ques %}
+                {{ first_que }}
+                {% endfor %}
+
+            </select>
+
+            <input type="submit" value="Submit your Response" class="btn btn-outline-light my-5">
+        </div>
+    </form>
+</div>
+{% endblock %}

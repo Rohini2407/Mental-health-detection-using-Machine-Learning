@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    SignUp Page
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="container card mt-5 col-lg-5 bg-dark text-white">
+            <h2 class="text-center mt-4">SignUp Page</h2>
+            <div class="row align-items-center my-2">
+                <div class="col-6">
+                    <label for="Username">Username</label>
+                    <input type="email" class="form-control" placeholder="Username" name="username">
+                </div>
+                <div class="col-6">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" placeholder="Email Address" name="email">
+                </div>
+            </div>
+            <div class="row align-items-center my-2">
+
+                <div class="col-6">
+                    <label for="Password">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" name="password1">
+                </div>
+                <div class="col-6">
+                    <label for="Email">Confirm Password</label>
+                    <input type="password" class="form-control" placeholder="Confirm Password" name="password2">
+                </div>
+            </div>
+            {% for field in form %}
+                <div class="fieldWrapper">
+                    {{ field.errors }}
+
+                </div>
+            {% endfor %}
+            <div class="row align-items-center my-2 mx-auto">
+                <input type="submit" class="btn btn-primary align-items-center" value="Submit">
+            </div>
+            
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Stage-2| Test
+{% endblock %}
+
+{% block content %}
+<div class="container bg-dark text-white mt-3">
+    <h2 class="pt-3">Hello, {{ request.user }}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="container">
+
+            <div class="col-12 mt-5">
+                <h1 class="text-center alert alert-info">Take a Test</h1>
+            </div>
+            <div class="col-lg-8 mx-auto">
+                <label for="first_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Have you ever experienced a terrible occurrence that has impacted you significantly?
+                    Examples may include being the victim of armed assault, witnessing a tragedy happen to someone else,
+                    surviving a sexual assault, or living through a natural disaster</label>
+                <select name="first_ques" id="first_ques" class="form-control">
+                    {% for first_que in form.first_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+                <label for="second_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Do you ever feel that you’ve been affected by feelings of edginess, anxiety, or nerves?</label>
+                <select name="second_ques" id="second_ques" class="form-control">
+                    {% for first_que in form.second_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+                <label for="third_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Have you ever experienced an ‘attack’ of fear, anxiety, or panic?</label>
+                <select name="third_ques" id="third_ques" class="form-control">
+                    {% for first_que in form.third_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+                <label for="fourth_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Do feelings of anxiety or discomfort around others bother you?</label>
+                <select name="fourth_ques" id="fourth_ques" class="form-control">
+                    {% for first_que in form.fourth_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+                <label for="fifth_ques"
+                    style="border: 1px solid cornflowerblue; padding: 15px 10px; border-radius: 8px; margin: 20px 0px;">
+                    Have you experienced a week or longer of lower-than-usual interest in activities that you usually
+                    enjoy?
+                    Examples might include work, exercise, or hobbies.</label>
+                <select name="fifth_ques" id="fifth_ques" class="form-control">
+                    {% for first_que in form.fifth_ques %}
+                    {{ first_que }}
+                    {% endfor %}
+
+                </select>
+
+                <input type="submit" value="Submit your Response" class="btn btn-outline-light my-5">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

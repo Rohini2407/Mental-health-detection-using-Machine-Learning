@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-white">
+    <h3 class="mt-3">Hello, {{username}} </h3>
+    <div class="card text-dark row col-lg-12">
+        <h2 class="text-center">Mental Health Checkup Test</h2>
+        <p class="text-center text-danger">(Enter your Details Properly.)</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div style="height: 500px;overflow: auto;">
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Age <span class="text-danger">*</span></label>
+                        <input class="form-control" type="number" name="label_Age" id="label_Age" required>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Gender <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_Gender" id="label_Gender" required>
+                            <option value="0" selected>Male</option>
+                            <option value="1">Female</option>
+                            <option value="2">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Are you self-employed or do you work for a company? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_self_employed" id="label_self_employed" required>
+                            <option value="0" selected>No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Does your family have a history of mental health issues? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_family_history" id="label_family_history" required>
+                            <option value="0" selected>No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Are you currently undergoing any form of treatment for mental health concerns?
+                            <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_treatment" id="label_treatment" required>
+                            <option value="0" selected>No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Have you experienced difficulties in performing your job due to mental health
+                            issues? <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_work_interfere" id="label_work_interfere" required>
+                            <option value="0" selected>Don't know</option>
+                            <option value="1">Never</option>
+                            <option value="2">Often</option>
+                            <option value="3">Rarely</option>
+                            <option value="4">Sometimes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">How many employees does your company have? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_no_employees" id="label_no_employees" required>
+                            <option value="0" selected>1-5</option>
+                            <option value="1">100-500</option>
+                            <option value="2">26-100</option>
+                            <option value="3">500-1000</option>
+                            <option value="4">6-25</option>
+                            <option value="4">More than 1000</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Does your job allow you to work remotely? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_remote_work" id="label_remote_work" required>
+                            <option value="0" selected>No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Is your employer involved in the tech industry? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_tech_company" id="label_tech_company" required>
+                            <option value="0" selected>No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Are you satisfied with the mental health benefits offered by your employer? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_benefits" id="label_benefits" required>
+                            <option value="0" selected>Don't know</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Do you feel comfortable discussing mental health care options with your employer?
+                            <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_care_options" id="label_care_options" required>
+                            <option value="0" selected>No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Does your company offer a wellness program that includes mental health support?
+                            <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_wellness_program" id="label_wellness_program" required>
+                            <option value="0" selected>Don't know</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Do you feel comfortable seeking help for mental health issues at work? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_seek_help" id="label_seek_help" required>
+                            <option value="0" selected>Don't know</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Do you believe your mental health status would be kept confidential if you
+                            discussed it with your employer? <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_anonymity" id="label_anonymity" required>
+                            <option value="0" selected>Don't know</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Does your workplace offer mental health-related leave options? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_leave" id="label_leave" required>
+                            <option value="0" selected>Don't know</option>
+                            <option value="1">Somewhat difficult</option>
+                            <option value="2">Somewhat easy</option>
+                            <option value="3">Very difficult</option>
+                            <option value="4">Very easy</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Do you believe discussing mental health issues at work could have negative
+                            consequences? <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_mental_health_consequence"
+                            id="label_mental_health_consequence" required>
+                            <option value="0" selected>Maybe</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Do you think mental health is taken as seriously as physical health in your
+                            workplace? <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_phys_health_consequence"
+                            id="label_phys_health_consequence" required>
+                            <option value="0" selected>Maybe</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Do you feel comfortable discussing mental health with your coworkers? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_coworkers" id="label_coworkers" required>
+                            <option value="0" selected>No</option>
+                            <option value="1">Some of them</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Do you feel comfortable discussing mental health with your supervisor? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_supervisor" id="label_supervisor" required>
+                            <option value="0" selected>No</option>
+                            <option value="1">Some of them</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Have you ever been asked about your mental health in a job interview? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_mental_health_interview"
+                            id="label_mental_health_interview" required>
+                            <option value="0" selected>Maybe</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Have you ever been asked about your physical health in a job interview? <span
+                                class="text-danger">*</span></label>
+                        <select class="form-control" name="label_phys_health_interview" id="label_phys_health_interview"
+                            required>
+                            <option value="0" selected>Maybe</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Do you think there's a stigma associated with mental health in your workplace?
+                            <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_mental_vs_physical" id="label_mental_vs_physical"
+                            required>
+                            <option value="0" selected>Don't know</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-lg-12 my-2">
+                    <div class="col-lg-6">
+                        <label for="">Have you experienced any negative consequences at work due to mental
+                            health-related behaviors? <span class="text-danger">*</span></label>
+                        <select class="form-control" name="label_obs_consequence" id="label_obs_consequence" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6">
+                        <label for="">Do you have any additional comments or thoughts on mental health in the workplace?
+                            </label>
+                        <input type="text" class="form-control" name="label_comments" id="label_comments" >
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 text-center">
+                <button type="submit" class="btn btn-dark my-3">Submit Test</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

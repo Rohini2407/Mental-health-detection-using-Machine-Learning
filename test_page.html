@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Take Test
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item col-2 "><a href="/take_test" class="btn btn-primary">Take Stage-1 Test</a></li>
+            {% for message in messages %}
+                {% if message.tags == "success" %}
+                    <li class="list-group-item col-2 "><a href="{% url 'stage2Test' %}" class="btn btn-primary">Take
+                        Stage-2
+                        Test</a></li>
+                    <li class="list-group-item col-2 "><a href="{% url 'stage3Test' %}" class="btn btn-primary">Take
+                        Stage-3
+                        Test</a></li>
+                {% else %}
+                    <li class="list-group-item col-2 "><a href="{% url 'stage2Test' %}" class="btn btn-primary disabled" disabled aria-disabled="true">Take
+                        Stage-2
+                        Test</a></li>
+                    <li class="list-group-item col-2 "><a href="{% url 'stage3Test' %}" class="btn btn-primary disabled" aria-disabled="true">Take
+                        Stage-3
+                        Test</a></li>
+                {% endif %}
+            {% endfor %}
+
+
+        </ul>
+    </div>
+{% endblock %}

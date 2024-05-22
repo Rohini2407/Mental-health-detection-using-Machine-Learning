@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Analyze User
+{% endblock %}
+
+{% block content %}
+
+    <div class="col-4">
+        <h2 class="text text-center alert alert-info">Stage-1 Analysis</h2>
+        <div class="paramChart">
+            <canvas id="analyzeChar"></canvas>
+        </div>
+    </div>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: "{% url 'parse_user_responses' %}",
+            success: function (data) {
+                let user_data = JSON.parse(data)
+                console.log(user_data[0])
+                let first_ques = []
+                let second_ques = []
+                let third_ques = []
+                let fourth_ques = []
+                let fifth_ques = []
+                let date_vals = []
+                let time_vals = []
+                for (let i = 0; i <= 9; i++) {
+                    first_ques.push(user_data[i].first_ques)
+                    second_ques.push(user_data[i].second_ques)
+                    third_ques.push(user_data[i].third_ques)
+                    fourth_ques.push(user_data[i].fourth_ques)
+                    fifth_ques.push(user_data[i].fifth_ques)
+                    date_vals.push(user_data[i].date_time.slice(0, 10))
+                    time_vals.push(user_data[i].date_time.slice(11, 19))
+                }
+                let yesValues = []
+                const entries = Object.entries(user_data[0]).map(([key, value]) => `${value}`)
+                {#console.log(get_counts(entries.slice(1)))#}
+                {#entries.forEach(([key, value]) => console.log(`${key} = ${value}`))#}
+                for (let i = 0; i <= user_data.length - 1; i++) {
+                    const entries = get_counts(Object.entries(user_data[i]).map(([key, value]) => `${value}`))
+                    yesValues.push(entries)
+                }
+                console.log(yesValues)
+                let config = {
+
+                    type: 'bar',
+                    data: {
+                        labels: date_vals,
+                        datasets: [
+                            {
+                                label: "Total Yes",
+                                data: yesValues
+                            },
+
+                        ]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        responsive: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Stage-1 Analysis'
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'nearest',
+                        },
+
+                    }
+                }
+
+                $("canvas#analyzaChart").remove()
+                var width = (window.innerWidth > 0) ? window.innerWidth : screen.Width;
+                console.log(typeof width)
+                console.log($(screen.width))
+                var screenThresh = 600;
+                if (width > 600) {
+                    $("div.paramChart").append('<canvas id="analyzeChart\" style="display: inline; width: 670px; height: 450px;"></canvas>');
+                } else if (width < screenThresh) {
+                    $("div.paramChart").append('<canvas id="analyzeChart\" style="display: inline;width: 340px; height: 400px;"></canvas>');
+                }
+                let ctx = document.getElementById('analyzeChart').getContext('2d');
+                let chart = new Chart(ctx, config)
+
+            }
+        });
+
+        function get_counts(list) {
+            let counts = {}
+            for (const num of list) {
+                counts[num] = counts[num] ? counts[num] + 1 : 1;
+
+            }
+            return counts["Yes"]
+        }
+    </script>
+{% endblock %}
